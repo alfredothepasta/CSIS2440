@@ -1,4 +1,4 @@
-<?php ?>
+<?php echo $_GET['url'];?>
 
 <!doctype html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css\bootstrap\bootstrap.css">
 </head>
 
-<?php include 'includes/navbar.php'; ?>
+<?php include '../app/views/includes/navbar.php'; ?>
 <br>
 <header>
     <div class="container text-center">
@@ -35,8 +35,8 @@
         <div class="col-md-8">
             <p>My name is Alex Reed, welcome to my working website&trade; for CSIS2440! This pages will serve to
             navigate you to all of the assignments and stuff for the course! Of course this whole thing is going to be
-                completely torn down in a bit, I plan on replacing it with an MVC framework and creating my own theme
-                in bootstrap. You've probably already noticed I entirely scrapped the index file from the default server.
+                completely torn down in a bit, I plan on replacing it with an MVC framework (completed) and creating my own theme
+                in bootstrap (WIP). You've probably already noticed I entirely scrapped the index file from the default server.
                 My interests include:</p>
             <ul>
                 <li>Skiing</li>
@@ -56,4 +56,4 @@
         <div class="col-md"></div>
     </div>
 </article>
-<?php include 'includes/footer.php' ?>
+<?php include '../app/views/includes/footer.php' ?>

@@ -1,7 +1,7 @@
 
 <?php
-include '../includes/head.php';
-include '../includes/navbar.php';
+include '../app/views/includes/head.php';
+include '../app/views/includes/navbar.php';
 // here we have some variables
 echo("<div class=\"container\">");
 $score = 0;
@@ -52,5 +52,5 @@ print("It is the year of the:<br>");
 print("<p>$chineseZodiac[$yearMod12]</p>");
 
 echo("</div>");
-include '../includes/footer.php';
+include '../app/views/includes/footer.php';
 ?>

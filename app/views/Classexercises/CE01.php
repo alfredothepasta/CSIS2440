@@ -1,7 +1,7 @@
 
     <?php
-    include '../includes/head.php';
-    include '../includes/navbar.php';
+    include '../app/views/includes/head.php';
+    include '../app/views/includes/navbar.php';
     // here we have some variables
     echo("<div class=\"container\">");
     $helloWorld = "Hello World";
@@ -10,10 +10,9 @@
     echo("<p>$helloWorld!</p>");
     echo("<p>My name is: $name</p>");
     echo("<p>Age: $age</p>");
-    echo(__DIR__);
     print("Here's a print command.");
     echo("</div>");
-    include '../includes/footer.php';
+    include '../app/views/includes/footer.php';
     ?>
 
 </body>
