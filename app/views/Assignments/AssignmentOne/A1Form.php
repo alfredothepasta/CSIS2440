@@ -53,8 +53,15 @@ and open the template in the editor.
                             <br>
                             <lable for="Gender">Gender:</lable>
                             <div id="Gender" class="form-check form-check-inline">
-                                <input type="radio" value="Male" name="gender" class="form-check-input" id="genderM"><lable for="genderM">Male</lable>  
-                                <input type="radio" value="Female" name="gender" class="form-check-input" id="genderF"><lable for="genderF">Female</lable>
+                                <input type="radio" value="Male" name="Gender"
+                                       class="form-check-input" id="genderM">
+                                <lable for="genderM">&nbsp;Male&nbsp;</lable>
+                                <input type="radio" value="Female" name="Gender"
+                                       class="form-check-input" id="genderF">
+                                <lable for="genderF">&nbsp;Female&nbsp;</lable>
+                                <input type="radio" value="Non-Binary" name="Gender"
+                                       class="form-check-input" id="genderNB">
+                                <lable for="genderNB">&nbsp;Non-Binary&nbsp;</lable>
                             </div>
                             <br>
                             <lable for="KingdomName">Kingdom</lable>

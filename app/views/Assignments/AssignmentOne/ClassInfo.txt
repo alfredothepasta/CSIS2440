@@ -1,4 +1,4 @@
-{<p>Fighters include soldiers, guardsmen, barbarian warriors,
+<p>Fighters include soldiers, guardsmen, barbarian warriors,
 and anyone else for whom fighting is a way of life. They
 train in combat, and they generally approach problems
 head on, weapon drawn.</p><p>Not surprisingly, Fighters are best at fighting of all the
@@ -10,9 +10,11 @@ weapons and armor.</p>
 <p>The Prime Requisite for Fighters is Strength; a character
 must have a Strength score of 9 or higher to become a
 Fighter. Members of this class may wear any armor and
-use any weapon.</p>}
+use any weapon.</p>
 
-{<p>Clerics are those who have devoted themselves to the
+/delimiter/
+
+<p>Clerics are those who have devoted themselves to the
 service of a deity, pantheon or other belief system. Most
 Clerics spend their time in mundane forms of service such
 as preaching and ministering in a temple; but there are
@@ -33,8 +35,11 @@ details).</p>
 must have a Wisdom score of 9 or higher to become a
 Cleric. They may wear any armor, but may only use blunt
 weapons (specifically including warhammer, mace, maul,
-club, quarterstaff, and sling).</p>}
-{<p>Thieves are those who take what they want or need by
+club, quarterstaff, and sling).</p>
+
+/delimiter/
+
+<p>Thieves are those who take what they want or need by
 stealth, disarming traps and picking locks to get to the gold
 they crave; or “borrowing” money from pockets,
 beltpouches, etc. right under the nose of the “mark”
@@ -48,9 +53,11 @@ must have a Dexterity score of 9 or higher to become a
 Thief. They may use any weapon, but may not wear
 metal armor as it interferes with stealthy activities, nor may
 they use shields of any sort. Leather armor is acceptable,
-however.</p>}
- 
-{<p>Magic-Users are those who seek and use knowledge of the
+however.</p>
+
+/delimiter/
+
+<p>Magic-Users are those who seek and use knowledge of the
 arcane. They do magic not as the Cleric does, by faith in a
 greater power, but rather through insight and
 understanding.</p>
@@ -64,4 +71,4 @@ character must have an Intelligence score of 9 or higher to
 become a Magic-User. The only weapons they become
 proficient with are the dagger and the walking staff (or
 cudgel). Magic-Users may not wear armor of any sort nor
-use a shield as such things interfere with spellcasting.</p>}
+use a shield as such things interfere with spellcasting.</p>

@@ -3,7 +3,7 @@
         <a href="../../index.php" class="navbar-brand">Alex's Website</a>
         <ul class="navbar-nav ">
             <li class="nav-item">
-                <a href="" class="nav-link">Assignment 1</a>
+                <a href="/Assignments/A1" class="nav-link">Assignment 1</a>
             </li>
             <li class="nav-item">
                 <a href="" class="nav-link">Assignment 2</a>
@@ -30,3 +30,4 @@
         </ul>
     </div>
 </nav>
+<br>

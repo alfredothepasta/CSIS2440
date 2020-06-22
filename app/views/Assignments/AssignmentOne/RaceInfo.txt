@@ -1,11 +1,14 @@
-{<p><b>Description</b>: Humans come in a broad variety of shapes and sizes. An 
+<p><b>Description</b>: Humans come in a broad variety of shapes and sizes. An
 average Human male in good health stands around six feet tall and weighs about 
 175 pounds. Most Humans live around 75 years.</p> <p><b>Restrictions</b>: Humans
  may be any single class. They have no minimum or maximum ability score requirements.
 </p><p><b> Special Abilities</b>: Humans learn unusually quickly, gaining a bonus 
 of 10% to all experience "points earned. Saving Throws: Humans are the “standard,” 
-and thus have no saving throw bonuses.</p>}
-{<p><b>Description</b>: Elves are a slender race, with both genders
+and thus have no saving throw bonuses.</p>
+
+/delimiter/
+
+<p><b>Description</b>: Elves are a slender race, with both genders
 standing around five feet tall and weighing around 130
 pounds. Most have dark hair, with little or no body or
 facial hair. Their skin is pale, and they have pointed ears
@@ -31,9 +34,11 @@ the paralyzing attack of ghouls. Also, they are less likely to
 be surprised in combat, reducing the chance of surprise by
 1 in 1d6.</p>
 <p><b>Saving Throws</b>: Elves save at +1 vs. Paralysis or Petrify,
-and +2 vs. Magic Wands and Spells.</p>}
+and +2 vs. Magic Wands and Spells.</p>
+
+/delimiter/
  
-{<p><b>Description</b>: Dwarves are a short, stocky race; both male
+<p><b>Description</b>: Dwarves are a short, stocky race; both male
 and female Dwarves stand around four feet tall and
 typically weigh around 120 pounds. Their long hair and
 thick beards are dark brown, gray or black. They take
@@ -58,9 +63,11 @@ shifting walls and new construction on a roll of 1-2 on 1d6;
 a search must be performed before this roll may be made.</p>
 <p><b>Saving Throws: Dwarves save at +4 vs. Death Ray or
 Poison, Magic Wands, Paralysis or Petrify, and Spells, and
-at +3 vs. Dragon Breath.</p>}
- 
-{<p><b>Description</b>: Halflings are small, slightly stocky folk who
+at +3 vs. Dragon Breath.</p>
+
+/delimiter/
+
+<p><b>Description</b>: Halflings are small, slightly stocky folk who
 stand around three feet tall and weigh about 60 pounds.
 They have curly brown hair on their heads and feet, but
 rarely have facial hair. They are usually fair skinned, often
@@ -91,5 +98,6 @@ only once, using either the Thief ability or the Halfling
 ability, whichever is better.</p>
 <p><b>Saving Throws</b>: Halflings save at +4 vs. Death Ray or
 Poison, Magic Wands, Paralysis or Petrify, and Spells, and
-at +3 vs. Dragon Breath.</p>}
+at +3 vs. Dragon Breath.</p>
+
 
