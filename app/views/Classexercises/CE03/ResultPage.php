@@ -64,7 +64,7 @@ $arrival = $data['arrival'];
                     <h3>Information</h3>
                     <?php
                     print("<p>You picked the:" . $ships[$theShip]['name'] . ". </p>");
-                    // Calculate the distance
+                    // Calculate the distance:
                     $distance = PlanetDistance($planets[$departure]['x'],
                         $planets[$departure]['y'],
                         $planets[$departure]['z'],

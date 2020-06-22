@@ -33,7 +33,7 @@ $shipsArray= array(0=>"Crate",1=>"Lightening",2=>"Starliner",3=>"VD Tug", 4=>"Bi
             <div class="row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
-                    <form method = "post" action = "CEO3Result">
+                    <form method = "post" action = "CE03Result">
                         <div class="form-group">
                             <label for="ship">The Ship you will use</label>
                             <select id="ship" name="ship">
