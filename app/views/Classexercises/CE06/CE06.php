@@ -1,4 +1,6 @@
 <?php
+include_once APPROOT . '/app/views/includes/head.php';
+include_once APPROOT . '/app/views/includes/navbar.php';
 require_once APPROOT . '/app/views/Classexercises/CE06/DataBaseConnection.php';
 $planets = array(
     array("name" => "Ares",
@@ -172,3 +174,4 @@ while ($row = $return->fetch_assoc()) {
 echo "</table>";
 mysqli_close($con);
 
+include_once APPROOT . '/app/views/includes/footer.php';

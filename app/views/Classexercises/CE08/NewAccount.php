@@ -10,8 +10,6 @@ and open the template in the editor.
         <title>New Captain Account</title>
     
         <?php
-        require_once 'DataBaseConnection.php';
-        include 'Header.php';
         print("<div class=\"container-fluid\">
             <div class=\"row\">
                 <div class=\"col-sm-2\"></div>
@@ -21,7 +19,7 @@ and open the template in the editor.
             $name = $_POST['CapName'];
             $email = $_POST['Email'];
             $thePass = hash("ripemd128", $_POST['Password']);
-            $insert = "INSERT INTO `CSIS2440`.`Captains` (`CaptainName`, `Email`, `Command`, `Combat`, `Commerce`, `Cunning`, `ThePass`) "
+            $insert = "INSERT INTO `Captains` (`CaptainName`, `Email`, `Command`, `Combat`, `Commerce`, `Cunning`, `ThePass`) "
                     . "VALUES ('$name', '$email','" . rand(25, 100) . "', '" . rand(25, 100) . "', '" . rand(25, 100) . "', '" . rand(25, 100) . "','$thePass')";
             //echo $insert;
             $success = $con->query($insert);
@@ -31,7 +29,7 @@ and open the template in the editor.
                 echo $failmess;
                 print('Invalid query: ' . mysqli_error($con) . "<br>");
             } else {
-                echo $name . " was Created<br><a href=\"LoginPage.php\">Go back to login</a>";
+                echo $name . " was Created<br><a href=\"LoginPage\">Go back to login</a>";
             }
             print("</div>
                 <div class=\"col-sm-2\"></div>
@@ -44,7 +42,7 @@ and open the template in the editor.
             <div class="row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
-            <form class="form-horizontal" action="NewAccount.php" method="post">
+            <form class="form-horizontal" action="NewAccount" method="post">
 <fieldset>
 
 <!-- Form Name -->
@@ -94,6 +92,4 @@ and open the template in the editor.
 
 HTML;
         }
-
-        include 'Footer.php';
         ?>

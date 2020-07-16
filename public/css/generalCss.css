@@ -1,0 +1,36 @@
+/* Background color, text color
+------------------------------------------------------------- */
+
+.gunmetal {
+  background-color: #244247;
+}
+
+.darkGunmetal {
+  background-color: #233237;
+}
+
+.navyBlue {
+  background-color: #18121e;
+}
+
+.maroon {
+  background-color: #984843;
+}
+
+.darkMaroon {
+  background-color: #6e3b38;
+}
+
+.gold {
+  background-color: #eac67a;
+}
+
+.gold-text {
+  color: #eac67a;
+}
+
+/* Edit dat text
+------------------------------------------------------------- */
+
+.gold-text {
+}

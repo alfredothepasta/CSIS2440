@@ -88,5 +88,4 @@ and open the template in the editor.
 
         <!-- Custom scripts for this template -->
         <script src="../../../js/freelancer.min.js" type="text/javascript"></script>
-    </body>
-</html>
+    <?php include '../app/views/includes/footer.php'; ?>

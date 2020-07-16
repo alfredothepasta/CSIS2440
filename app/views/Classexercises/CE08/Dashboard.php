@@ -2,18 +2,12 @@
 <?php
 session_start();
 ?>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Captain's Dash</title>
         <?php
-        include APPROOT. '/app/views/Classexercises/CE08/Header.php';
-        include APPROOT. '/app/views/includes/navbar.php';
 
         // put your code here
         //print_r($_SESSION);
         $name = $_SESSION['Captain'];
-        $email = $_SESSION['user'];
+        $email = $_SESSION['CE08user'];
         $command = $_SESSION['Command'];
         $combat = $_SESSION['Combat'];
         $commerce = $_SESSION['Commerce'];
@@ -145,7 +139,6 @@ session_start();
         </div>
     </div>
 HTML;
-        include APPROOT. '/app/views/Classexercises/CE08/Footer.php ';
 
 
         ?>

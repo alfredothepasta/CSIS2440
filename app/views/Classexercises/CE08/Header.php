@@ -16,6 +16,9 @@ print <<<HTML
         <!-- Theme CSS -->
 
         <link href="../../../css/freelancer.min.css" rel="stylesheet" type="text/css"/>
+HTML;
+include APPROOT . '/app/views/includes/stylelinks.php';
+print <<<HTML
     </head>
         <body>
 HTML;

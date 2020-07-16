@@ -20,13 +20,23 @@
                         Class Exercises
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="../Classexercises/CE01">CE01</a>
-                        <a class="dropdown-item" href="../Classexercises/CE02">CE02</a>
-                        <a class="dropdown-item" href="../Classexercises/CE03">CE03</a>
-                        <a class="dropdown-item" href="../Classexercises/CE04">CE04</a>
+                        <a class="dropdown-item" href="/Classexercises/CE01">CE01</a>
+                        <a class="dropdown-item" href="/Classexercises/CE02">CE02</a>
+                        <a class="dropdown-item" href="/Classexercises/CE03">CE03</a>
+                        <a class="dropdown-item" href="/Classexercises/CE04">CE04</a>
+                        <a class="dropdown-item" href="/Classexercises/CE06">CE06</a>
+                        <a class="dropdown-item" href="/Classexercises/CE07">CE07</a>
+                        <a class="dropdown-item" href="/Classexercises/CE08">CE08</a>
                     </div>
                 </div>
             </li>
+            <?php
+            // Conditional logout button based on whatever the heck you're logged into.
+            if(isset($_SESSION['CE08user'])){
+                print '<li class="nav-item"><a href="/Classexercises/CE08/Logout"><button type="button" class="btn btn-secondary:wq">Logout</button></li></a>';
+            }
+            ?>
+
         </ul>
     </div>
 </nav>

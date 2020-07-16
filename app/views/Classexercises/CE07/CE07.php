@@ -4,12 +4,12 @@
 require_once APPROOT . '/app/views/Classexercises/CE07/DataBaseConnection.php';
 //print_r($_POST);
 $sneaky = $data['sneaky'];
-$name = $data['planetname'];
+$name = $data['name'];
 $x = $data['posx'];
 $y = $data['posy'];
 $z = $data['posz'];
-$desc = $data['description'];
-$faction = $data['alignment'];
+$desc = $data['desc'];
+$faction = $data['faction'];
 $action = $data['action'];
 
 ?>
@@ -22,11 +22,14 @@ $action = $data['action'];
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
+        <?php   include APPROOT . '/app/views/includes/stylelinks.php' ?>
+
         <!-- Theme CSS -->
 
         <link href="../../../css/freelancer.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+    <?php   include APPROOT . '/app/views/includes/navbar.php' ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-2"></div>
@@ -55,7 +58,7 @@ $action = $data['action'];
                     ?>
                 </div>
                 <div class="col-sm-8">
-                    <form method = "post" action = "CE07PlanetForm.php" class="form-horizontal">
+                    <form method = "post" action = "CE07" class="form-horizontal">
                         <div class="form-group">
                             <?php
                             if (isset($_POST['Submit']) || $sneaky == 1) {
@@ -84,93 +87,9 @@ $action = $data['action'];
     <input type='hidden' value=0 name='sneaky'></input></fieldset>
 HTML;
                             } else {
-                                //show the form
-                                print <<<HTML
-<fieldset>
+                                //Yeah no his way was FUGLY
+                                include APPROOT . '/app/views/Classexercises/CE07/form.php';
 
-<!-- Form Name -->
-<legend>Planet Form</legend>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="PlanetName">Planet Name</label>  
-  <div class="col-md-4">
-  <input id="PlanetName" name="PlanetName" type="text" placeholder="Earth" class="form-control input-md" required="">
-  <span class="help-block">Name of the planets need to be unique</span>  
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="PosX">X Position</label>  
-  <div class="col-md-4">
-  <input id="PosX" name="PosX" type="text" placeholder="0" class="form-control input-md" required="">
-  <span class="help-block">A positive integer</span>  
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="PosY">Y Position</label>  
-  <div class="col-md-4">
-  <input id="PosY" name="PosY" type="text" placeholder="0" class="form-control input-md" required="">
-  <span class="help-block">Must Be a positive integer</span>  
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="PosZ">Z Position</label>  
-  <div class="col-md-4">
-  <input id="PosZ" name="PosZ" type="text" placeholder="0" class="form-control input-md" required="">
-  <span class="help-block">Must be a positive integer</span>  
-  </div>
-</div>
-
-<!-- Textarea -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Desc">Planet Description</label>
-  <div class="col-md-4">                     
-    <textarea class="form-control" id="Desc" name="Desc">A short description of the planet</textarea>
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Alignment">Faction Alignment</label>
-  <div class="col-md-4">
-    <select id="Alignment" name="Alignment" class="form-control">
-      <option value="Alliance">Alliance</option>
-      <option value="Pirates">Pirates</option>
-      <option value="Rebels">Rebels</option>
-      <option value="Imperial">Imperial</option>
-      <option value="Free Worlds">Free Worlds</option>
-    </select>
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Action">Select One</label>
-  <div class="col-md-4">
-    <select id="Action" name="Action" class="form-control">
-      <option value="Search">Search</option>
-      <option value="Insert">Add</option>
-      <option value="Update">Update</option>
-    </select>
-  </div>
-</div>
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Submit">Submit</label>
-  <div class="col-md-4">
-    <input id="submit" name="Submit" class="btn btn-primary" type="submit"></input>
-  </div>
-</div>                              
-<div class="name"></div>  
-<input type="hidden" value=1 name="sneaky"></input>
-</fieldset>
-HTML;
                             }
                             ?>
                         </div>
@@ -193,5 +112,4 @@ HTML;
 
             <!-- Custom scripts for this template -->
             <script src="../../../js/freelancer.min.js" type="text/javascript"></script>
-    </body>
-</html>
+<?php   include APPROOT . '/app/views/includes/footer.php' ?>

@@ -82,5 +82,4 @@ $shipsArray= array(0=>"Crate",1=>"Lightening",2=>"Starliner",3=>"VD Tug", 4=>"Bi
 
         <!-- Custom scripts for this template -->
         <script src="./js/freelancer.min.js" type="text/javascript"></script>
-    </body>
-</html>
+    <?php include '../app/views/includes/footer.php'; ?>

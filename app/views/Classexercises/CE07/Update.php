@@ -1,13 +1,15 @@
 <?php
 
-$update;//write the update statment
+$update = "UPDATE `Planets` SET `Active`= 1 ";//write the update statment
 if ($desc != "A short description of the planet") {
-    $update .= "";//add the description
+    $update .= ", `Description` = '$desc' ";//add the description
 }
-$update .= "";//add the where clause
+$update .= "WHERE (`PlanetName` = '$name')";//add the where clause
 $success = $con->query($update);
-if ($success == FALSE) {
-    //error if query did not run
+if($success == FALSE){
+    $failmess = "Whole Query " . $update . "<br>";
+    echo $failmess;
+    die('Invalid query: ' . mysqli_error($con));
 } else {
-    //let user know it worked
+    echo "$name's description was update. <br>";
 }
