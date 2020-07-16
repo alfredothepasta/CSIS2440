@@ -7,10 +7,16 @@ class Controller{
     // Load the model
     public function model($model){
         // Require model files
-        require_once '../app/models/' .$model. '.php';
+        if(file_exists('../app/models/' .$model. '.php')){
+            require_once '../app/models/' .$model. '.php';
+            return new $model();
+        } else {
+            die('Model not found');
+        }
+
 
         // Instantiate the model which is what we'll use to connect to the database
-        return new $model();
+
     }
 
     // Load view

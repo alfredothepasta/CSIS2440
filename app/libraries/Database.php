@@ -1,10 +1,10 @@
 <?php
 /*******************************
- * PDO Database Class
- * Connects to database
- * Creates prepared statements
- * Binds Values
- * Return rows and results
+ * PDO Database Class.
+ * Connects to database,
+ * Creates prepared statements,
+ * Binds Values,
+ * Return rows and results.
  *******************************/
 class Database {
     private $host = DB_HOST;

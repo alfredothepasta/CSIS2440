@@ -6,7 +6,7 @@
                 <a href="/Assignments/A1" class="nav-link">Assignment 1</a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link">Assignment 2</a>
+                <a href="/Assignments/A2" class="nav-link">Assignment 2</a>
             </li>
             <li class="nav-item">
                 <p class="nav-link">Assignment 3</p>
