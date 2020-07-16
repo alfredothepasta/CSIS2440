@@ -33,7 +33,7 @@
             <?php
             // Conditional logout button based on whatever the heck you're logged into.
             if(isset($_SESSION['CE08user'])){
-                print '<li class="nav-item"><a href="/Classexercises/CE08/Logout"><button type="button" class="btn btn-secondary:wq">Logout</button></li></a>';
+                print '<li class="nav-item"><a href="/Classexercises/CE08/Logout"><button type="button" class="btn btn-secondary:wqg">Logout</button></li></a>';
             }
             ?>
 
