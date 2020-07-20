@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<?php
-session_start();
-?>
+
         <?php
 
         // put your code here

@@ -1,5 +1,3 @@
-<?php echo $_GET['url'];?>
-
 <!doctype html>
 <html lang="en">
 <head>

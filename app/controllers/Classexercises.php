@@ -10,7 +10,6 @@ class Classexercises extends Controller
 
     public function __construct()
     {
-        $this->dbModel = $this->model('Planet');
     }
 
     public function CE01(){

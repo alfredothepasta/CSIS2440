@@ -1,7 +1,6 @@
 <?php
-session_start();
 if(isset($_SESSION['CE08user'])){
-    header("Location:/Classexercises/CE08");
+    header("Location:/Classexercises/CE08/Dashboard");
 }
 
 // I like to keep the php and html separate as much as possible.

@@ -1,7 +1,11 @@
 <?php
-/****************************
+/*
  * Functions, variables, etc
- ****************************/
+ */
+//echo (session_status());
+//echo('<br>');
+//$_SESSION['test'] .= 'test';
+//print_r($_SESSION);
 
 function isInvalid($err){
     if (!empty($err)) {
@@ -9,12 +13,10 @@ function isInvalid($err){
     }
 }
 $currentPage = $data['page'];
-$emailError = $data['email_err'];
-$passwordError = $data['password_err'];
 
-/***********************
+/****************************
  * The web page
- ***********************/
+ ****************************/
 
 
 include APPROOT . '/app/views/includes/head.php';
@@ -36,3 +38,5 @@ if($currentPage != null){
 }
 
 include APPROOT . '/app/views/includes/footer.php';
+
+session_write_close();

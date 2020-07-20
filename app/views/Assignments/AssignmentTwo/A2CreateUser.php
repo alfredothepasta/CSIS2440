@@ -4,8 +4,9 @@
 <div class="row">
     <div class="col-md-6 mx-auto">
         <div class="card card-body bg-light mt-5">
-            <h2>Create An Account</h2>
-            <p>To register, fill out the following form:</p>
+            <h2>Create A Player</h2>
+            <p>To register, please give me all of your sensitive data below:</p>
+            <p>Also, don't put any real info in.</p>
             <form action="/Assignments/A2/A2CreateUser" method="post">
 <!--               firstName -->
                 <div class="form-group">

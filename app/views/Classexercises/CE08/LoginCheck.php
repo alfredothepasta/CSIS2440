@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 unset($_SESSION['badPass']);
 // username and password sent from form
 $myusername = $_POST['myusername'];
@@ -31,6 +31,7 @@ if($count == 1) {
     $_SESSION['Captain'] = $row['CaptainName'];
     $_SESSION['Command'] = $row['Command'];
     $_SESSION['Commerce'] = $row['Commerce'];
+    $_SESSION['Combat'] = $row['Combat'];
     $_SESSION['Cunning'] = $row['Cunning'];
     $_SESSION['loginSet'] = true;
     // register user and pass, redirect to successful login

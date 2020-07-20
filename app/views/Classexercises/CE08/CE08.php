@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once APPROOT . '/app/views/Classexercises/CE08/Header.php';
 require_once APPROOT . '/app/views/includes/navbar.php';
 

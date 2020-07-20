@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
-        <a href="../../index.php" class="navbar-brand">Alex's Website</a>
+        <a href="<?php echo URLROOT;?>" class="navbar-brand">Alex's Website</a>
         <ul class="navbar-nav ">
             <li class="nav-item">
                 <a href="/Assignments/A1" class="nav-link">Assignment 1</a>
@@ -34,6 +34,9 @@
             // Conditional logout button based on whatever the heck you're logged into.
             if(isset($_SESSION['CE08user'])){
                 print '<li class="nav-item"><a href="/Classexercises/CE08/Logout"><button type="button" class="btn btn-secondary:wqg">Logout</button></li></a>';
+            }
+            if(isset($_SESSION['idUser'])){
+                print '<li class="nav-item"><a href="/Assignments/A2/Logout"><button type="button" class="btn btn-secondary:wqg">Logout</button></li></a>';
             }
             ?>
 

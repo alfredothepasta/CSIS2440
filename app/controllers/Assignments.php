@@ -46,7 +46,7 @@ class Assignments extends Controller
 
 
     /**
-     * Controller for the A2 page
+     * Controller for the A2 page, running everything through A2 was a bad idea
      * @param string $page defaults to create user page if not given parameters
      */
     public function A2($page = 'A2CreateUser'){
@@ -54,8 +54,12 @@ class Assignments extends Controller
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = null;
 
+
+
         // Do the thing for that page
         if($page == 'A2CreateUser'){
+            // if there's an active session redirect to the result page
+            $this->activeSession($page);
             // check for POST, create the data for the $data variable
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $data = $this->A2CreateData(false);
@@ -67,6 +71,7 @@ class Assignments extends Controller
 
                     // push it to the db
                     $this->assignmentModel->register($data);
+                    header("Location:/Assignments/A2/Login");
                 }
                 // if there are errors, they'll be passed into the page
             } else {
@@ -74,11 +79,60 @@ class Assignments extends Controller
                 // pass in the empty array
             }
 
-        } elseif ($page == 'Login'){
-            // Process form data for the login page
+        } elseif ($page == 'Result'){
+            if (!isset($_SESSION['idUser'])) header('Location:/Assignments/A2/Login');
+            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // search for the query string
+                $data = [
+                    'page' => 'Result',
+                    'resultSet' => $this->assignmentModel->searchUsers($_POST['search'], $_POST['searchBy'])
+                ];
+            } else {
+                // show all the poor shmuks who FELL FOR IT.
+                $data = [
+                    'page' => 'Result',
+                    'resultSet' => $this->assignmentModel->getUsers()
+                ];
+            }
+        } elseif ($page == 'Login') {
+            // if there's an active session redirect to the result page
+            $this->activeSession($page);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $data = $this->A2LoginData(false);
 
-        } elseif ($page == 'Posts'){
-            // Process form data for the posts page
+                if ($this->checkErrors($data['email_err'], $data['password_err'])){
+                    // Will either have the user data or false
+                    $loggedInUser = $this->assignmentModel->login($data['email'], $data['password']);
+
+                    if($loggedInUser){
+                        $data['currentUser'] = $this->assignmentModel->currentUser($loggedInUser->eMail);
+                        // Create session
+                        $this->createUserSession($loggedInUser);
+                    } else {
+                        $data['password_err'] = 'Invalid username or password';
+                    }
+                }
+
+            } else {
+                $data = $this->A2LoginData();
+            }
+        } elseif ($page == 'Logout'){
+            $data = ['page' => 'Logout'];
+        } elseif($page == 'UpdateInfo') {
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // create data array
+                $data = $this->A2UpdateData();
+                // pass data array into thing
+                $this->assignmentModel->updateUser($data);
+                $user = $this->assignmentModel->getUserByID($_SESSION['idUser']);
+                // update session vars
+                $this->createUserSession($user);
+                header('Location:/Assignments/A2');
+
+            } else {
+                $data = ['page' => 'UpdateInfo'];
+            }
         }
 
         $this->view('Assignments/AssignmentTwo/A2', $data);
@@ -86,7 +140,7 @@ class Assignments extends Controller
 
 
     /****************************************************************
-     * Creates the $data array for use with A2
+     * Creates the $data array for use with the A2 registration page
      * @param bool $empty creates empty data array by default
      * @return array|string[]
      ****************************************************************/
@@ -154,13 +208,46 @@ class Assignments extends Controller
         return $data;
     }
 
-
-    /*****************************************************************************
-     * Creates the data array for the Login page
-     * @param bool $empty default is true, set to false if there is POST data
+    /****************************************************************
+     * Creates the $data array for use with the A2 update page
      * @return array|string[]
-     *****************************************************************************/
-    private function A2Login($empty = true){
+     ****************************************************************/
+    private function A2UpdateData(){
+        $data = [
+                'page' => 'A2UpdateData',
+                'idUser' => $_SESSION['idUser'],
+                'firstName' => trim($_POST['firstName']),
+                'lastName' => trim($_POST['lastName']),
+                'birthDate' => trim($_POST['birthDate']),
+                'email' => trim($_POST['email']),
+                'first_name_err' => '',
+                'last_name_err' => '',
+                'birth_date_err' => '',
+                'email_err' => ''
+            ];
+
+        // Error checking
+        $data['first_name_err'] = (empty($data['firstName']))? 'First Name cannot be blank': '';
+        $data['last_name_err'] = (empty($data['lastName']))? 'Last Name cannot be blank': '';
+        $data['birth_date_err'] = (empty($data['birthDate']))? 'You had to be born sometime': '';
+
+        // Email we need to check if it's both empty and not in use
+        if(empty($data['email'])){
+            $data['email_err'] = 'Please enter your email';
+        } elseif ($this->assignmentModel->findUserByEmail($data['email'])){
+            $data['email_err'] = 'Email already in use';
+        }
+
+        return $data;
+    }
+
+
+    /****************************************************************
+     * Creates the $data array for use with the A2 Login page
+     * @param bool $empty creates empty data array by default
+     * @return array|string[]
+     ****************************************************************/
+    private function A2LoginData($empty = true){
         if($empty){
             $data = [
                 'page' => 'Login',
@@ -168,7 +255,7 @@ class Assignments extends Controller
                 'password' => '',
                 'email_err' => '',
                 'password_err' => '',
-                'invalid_creds_err' => ''
+                'currentUser' => ''
             ];
         } else {
             $data = [
@@ -177,33 +264,19 @@ class Assignments extends Controller
                 'password' => trim($_POST['password']),
                 'email_err' => '',
                 'password_err' => '',
-                'invalid_creds_err' => ''
+                'currentUser' => ''
             ];
 
-            // Email we need to check if it's both empty and not in use
-            if(empty($data['email'])){
-                $data['email_err'] = 'Please enter your email';
-            } elseif (!$this->assignmentModel->findUserByEmail($data['email'])){
-                $data['email_err'] = 'BAD';
-            }
+            // make sure an email/password is at least entered
+            empty($data['email']) ? $data['email_err'] = 'Please enter your email' : '';
+            empty($data['password']) ? $data['password_err'] = 'Please enter your password' : '';
 
-            // check password and password length
-            if(empty($data['password'])){
-                $data['password_err'] = 'Please enter a password';
-            } elseif (true) {
-                // todo: check password against username
-            }
-
-            // check that our confirm password has been filled out and matches
-            if(empty($data['confirm_password'])){
-                $data['confirm_password_err'] = 'Please confirm your password';
-            } elseif ($data['password'] != $data['confirm_password']) {
-                $data['confirm_password_err'] = 'Passwords do not match';
-            }
         }
 
         return $data;
     }
+
+
 
     /*******************************************************************
      * @param string ...$errors takes in an amount of error strings.
@@ -217,6 +290,27 @@ class Assignments extends Controller
             }
         }
         return true;
+    }
+
+    /*******************************************************************
+     * Sets the session variables and redirects to the result page
+     * @param object $user the user's info from the db
+     *******************************************************************/
+    private function createUserSession($user){
+        $_SESSION['idUser'] = $user->idUser;
+        $_SESSION['FirstName'] = $user->FirstName;
+        $_SESSION['LastName'] = $user->LastName;
+        $_SESSION['eMail'] = $user->eMail;
+        $_SESSION['Birthdate'] = $user->Birthdate;
+//        print_r($_SESSION);
+
+        header("Location:/Assignments/A2/Result");
+    }
+
+    private function activeSession($page){
+        if(isset($_SESSION['idUser']) && $page != 'Result'){
+            header('Location:/Assignments/A2/Result');
+        }
     }
 
 }
