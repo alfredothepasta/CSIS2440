@@ -111,6 +111,11 @@ class Classexercises extends Controller
         $this->view('Classexercises/CE09/CE09');
     }
 
+    public function CE10(){
+        $this->view('Classexercises/CE10/CE10');
+    }
+
+
 
 
 

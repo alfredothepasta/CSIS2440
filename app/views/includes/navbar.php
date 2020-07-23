@@ -27,6 +27,8 @@
                         <a class="dropdown-item" href="/Classexercises/CE06">CE06</a>
                         <a class="dropdown-item" href="/Classexercises/CE07">CE07</a>
                         <a class="dropdown-item" href="/Classexercises/CE08">CE08</a>
+                        <a class="dropdown-item" href="/Classexercises/CE09">CE09</a>
+                        <a class="dropdown-item" href="/Classexercises/CE10">CE10</a>
                     </div>
                 </div>
             </li>
