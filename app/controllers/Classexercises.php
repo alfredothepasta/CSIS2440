@@ -119,8 +119,35 @@ class Classexercises extends Controller
         $this->view('Classexercises/CE11/CE11');
     }
 
+    public function CE12(){
+        $this->view('Classexercises/CE12/CE12');
+    }
 
+    public function CE13(){
+        $this->view('Classexercises/CE13/SearchPlanets');
+    }
 
+    public function CE13PlanetSearch(){
+        include_once APPROOT . '/app/views/Classexercises/CE13/SQLPlantSearch.php';
+    }
 
+    public function CE14(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'productId' => $_POST['Select_Product'],
+                'action' => $_POST['action']
+            ];
+        } else {
+            $data = [
+                'productId' => '',
+                'action' => ''
+            ];
+        }
 
+        $this->view('Classexercises/CE14/CartExample', $data);
+    }
+
+    public function CE14CartInfo(){
+        include_once APPROOT . '/app/views/Classexercises/CE14/CartInfo.php';
+    }
 }

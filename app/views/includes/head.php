@@ -8,5 +8,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
     <link href="/js/bootstrap.js">
+    <script src="/public/js/Asynch.js"></script>
 </head>
 <body>

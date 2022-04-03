@@ -14,6 +14,4 @@ print <<<HTML
 
             <!-- Custom scripts for this template -->
             <script src="../../../js/freelancer.min.js" type="text/javascript"></script>
-    </body>
-</html>
 HTML;

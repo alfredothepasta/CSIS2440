@@ -1,12 +1,11 @@
 <?php
-?>
+include_once APPROOT . "/app/views/includes/head.php";
+include_once APPROOT . "/app/views/includes/navbar.php"; ?>
 <div class="row">
     <div class="col-md-6 mx-auto">
         <div class="card card-body bg-light mt-5">
-            <h2>Create A Player</h2>
-            <p>To register, please give me all of your sensitive data below:</p>
-            <p>Also, don't put any real info in.</p>
-            <form action="/Assignments/A3/CreateUser" method="post">
+            <h2>Create An Account</h2>
+            <form action="/ECommerce/NewUser" method="post">
 <!--               firstName -->
                 <div class="form-group">
                     <label for="firstName">First Name: <sup>*</sup></label>
@@ -55,7 +54,7 @@
                         <input type="submit" value="Register" class="btn btn-success btn-block" onclick="return validateCreate()">
                     </div>
                     <div class="col">
-                        <a href="/Assignments/A3/Login" class="btn btn-light btn-block">
+                        <a href="/ECommerce/Login" class="btn btn-light btn-block">
                             Have an account? Login
                         </a>
                     </div>
@@ -64,4 +63,6 @@
         </div>
     </div>
 </div>
+
+<?php include_once APPROOT . "/app/views/includes/footer.php"; ?>
 

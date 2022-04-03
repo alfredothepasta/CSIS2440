@@ -1,5 +1,21 @@
 <?php
+include APPROOT . "/app/views/Classexercises/CE13/DataBaseConnection.php";
+$action = $data['action'];
+$productId = $data['productId'];
 
+switch ($action) {
+    case "Add":
+        $_SESSION['cart'][$productId] ++; // Adds one of the selected items to the cart
+        break;
+    case "Remove":
+        $_SESSION['cart'][$productId] --; // Removes one of the selected items from the cart
+        if ($_SESSION['cart'][$productId] <= 0) unset($_SESSION['cart'][$productId]);
+        break;
+    case "Empty":
+        unset($_SESSION['cart']);
+        break;
+}
+//print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 
@@ -11,7 +27,7 @@
         <script>
             function productInfo(key) {
                 //creates the datafile with query string
-                var data_file = "CartInfo.php?info=" + key;
+                var data_file = "CE14CartInfo?info=" + key;
                 //this is making the http request
                 var http_request = new XMLHttpRequest();
                 try {
@@ -46,23 +62,41 @@
         </script>
 
         <?php
-        include 'Header.php';
+        include APPROOT . '/app/views/includes/stylelinks.php';
+        include APPROOT . '/app/views/Classexercises/CE14/Header.php';
+        include APPROOT . '/app/views/includes/navbar.php';
         ?>
-    <div class="container-fluid">
+
+    <div class="container">
         <div class="row">
             <div class="col-sm-2">
                 <div>
 
                 </div></div>
             <div class="col-sm-8">
-                <form action="CartExample.php" method="Post">
+                <form action="#" method="Post">
                     <div >
-                        <p><span class="text">Please Select a product:</span>
+                        <span class="text">Please Select a product:</span>
                             <select id="Select_Product" name="Select_Product" class="select">
                                 <?php
-                                
+                                $search = "SELECT ResName, idResources FROM CSIS2440.Resources order by ResName";
+                                $return = $con->query($search);
+
+                                if(!$return) {
+                                    $message = "Whole query: " . $search;
+                                    echo $message;
+                                    die('Invalid query: ' . mysqli_error());
+                                }
+
+                                while ($row = mysqli_fetch_array($return)) {
+                                    if ($row['idResources'] == $productId) {
+                                        echo "<option value='" . $row['idResources'] . "' selected='selected'>" . $row['ResName'] . "</option>\n";
+                                    } else {
+                                        echo  "<option value='" . $row['idResources'] . "'>" . $row['ResName'] . "</option>\n";
+                                    }
+                                }
                                 ?>
-                            </select></p>
+                            </select>
                         <table>
                             <tr>
                                 <td>
@@ -89,16 +123,54 @@
 
             </div>
         </div>
+        <br>
         <div class="row">
             <div class="col-sm-2"></div>
         <div id="Display_cart" class="col-sm-8">
                     <?php
-                    
+                    if(!empty($_SESSION['cart'])) {
+                        echo "<table border='1' cellpadding='3' width='640px'><tr><th>Name</th><th>Quantity</th><th>Price</th>"
+                            . "<th width='80px'>Line Cost</th></tr>";
+
+                        foreach ($_SESSION['cart'] as $productId => $quantity) {
+                            // var_dump($productId);
+                            $sql = "SELECT ResName, ResPPU FROM CSIS2440.Resources WHERE idResources = " . $productId;
+                            $result = $con->query($sql);
+
+                            if(mysqli_num_rows($result) > 0){
+                                list($name, $price) = mysqli_fetch_row($result);
+
+                                $lineCost = $price * $quantity; // line cost
+                                $total = $total + $lineCost; //add to the total cost
+                                echo "<tr>";
+                                //show this info in the table cells
+                                echo "<td align='Left' width='450px'>$name</td>";
+                                echo "<td align='center' width='75px'>$quantity</td>";
+
+                                echo "<td align='center' width='75px'>"  . money_format('%(#8n', $price) . "</td>";
+
+                                echo "<td align='center'>" . money_format('%(#8n', $lineCost) . "</td>";
+
+                                echo "</tr>";
+                            }
+                        }
+
+                        echo "<tr>";
+                        echo "<td colspan='3' align='right'>Total:</td>";
+                        echo "<td align='right'>" . money_format('%(#8n', $total) . "</td>";
+                        echo "</tr>";
+                        echo "</table>";
+                    } else {
+                        echo "You suck";
+                    }
+
+                    echo "</table>";
                     ?>
 
                 </div>
         </div>
     </div>
     <?php
-    include "Footer.php";
+    include APPROOT . '/app/views/Classexercises/CE14/Footer.php';
+    include APPROOT . '/app/views/includes/footer.php';
     ?>

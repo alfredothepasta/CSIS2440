@@ -14,13 +14,13 @@
             . '<td>' . $_SESSION['LastName'] . '</td>'
             . '<td>' . $_SESSION['Birthdate'] . '</td>'
             . '<td>' . $_SESSION['eMail'] . '</td>'
-            . '<td><a href="/Assignments/A2/UpdateInfo" class="btn btn-secondary">Edit</a></td>';
+            . '<td><a href="/Assignments/A3/UpdateInfo" class="btn btn-secondary">Edit</a></td>';
         ?>
     </table>
 
     <hr>
 
-    <form method="post" action="/Assignments/A2/Result">
+    <form method="post" action="/Assignments/A3/Result">
 
         <div class="form-group">
             <div class="row">

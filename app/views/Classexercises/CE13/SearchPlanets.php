@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require_once 'DataBaseConnection.php';
+require_once APPROOT . '/app/views/Classexercises/CE13/DataBaseConnection.php';
 $ships = array(
     array("name" => "Crate",
         "speed" => 1.8),
@@ -32,16 +32,35 @@ while ($row = $return->fetch_assoc()) {
     <head>
         <meta charset="UTF-8">
         <title>Search the Planets</title>
-        <script src="Asynch.js" type="text/javascript"></script>
+        <script src="/public/js/Asynch.js" type="text/javascript"></script>
         <script>
             function calculateDistance() {
                 //run AJAX here
+                let first = document.getElementById("planet1").value;
+                let second = document.getElementById("planet2").value;
+                let speed = document.getElementById("speed").value;
+                let data_file = "CE13PlanetSearch?ID1=" + first + "&ID2=" + second + "&speed=" + speed;
+                console.log(data_file);
+                let http_request = AJAXRequest();
+                http_request.onreadystatechange = function () {
+                    if (http_request.readyState == 4) {
+                        // Javascript function JSON.parse to parse JSON data;
+                        console.log("Using my code");
+                        document.getElementById("results").innerHTML = http_request.responseText;
+                    }
+                }
+
+                http_request.open("GET", data_file, true);
+                http_request.send();
+                return false;
             }
         </script>
+        <?php include APPROOT . "app/views/includes/stylelinks.php"; ?>
 
         <?php
         include "Header.php";
         ?>
+        <?php include APPROOT . "/app/views/includes/navbar.php"; ?>
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-10">
@@ -97,6 +116,7 @@ while ($row = $return->fetch_assoc()) {
         </span>
     </div>
     <?php
-    include "Footer.php";
+    include_once APPROOT . "/app/views/Classexercises/CE13/Footer.php";
+    include_once APPROOT . "/app/views/includes/footer.php";
     ?>
 

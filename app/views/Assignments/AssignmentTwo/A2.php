@@ -7,11 +7,6 @@
 //$_SESSION['test'] .= 'test';
 //print_r($_SESSION);
 
-function isInvalid($err){
-    if (!empty($err)) {
-        echo "is-invalid";
-    }
-}
 $currentPage = $data['page'];
 
 /****************************
@@ -34,7 +29,7 @@ include APPROOT . '/app/views/includes/navbar.php';
 if($currentPage != null){
     include APPROOT . "/app/views/Assignments/AssignmentTwo/$currentPage.php";
 } else {
-    include  APPROOT . "/app/views/Assignments/AssignmentTwo/A2CreateUser.php";
+    include APPROOT . "/app/views/Assignments/AssignmentTwo/CreateUser.php";
 }
 
 include APPROOT . '/app/views/includes/footer.php';

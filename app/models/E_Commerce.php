@@ -1,7 +1,7 @@
 <?php
 
 
-class Assignment
+class E_Commerce
 {
     private $db;
 
@@ -18,7 +18,7 @@ class Assignment
      ******************************************************************/
     public function register($data){
         $this->db->query("INSERT INTO `CSIS2440`.`A2Users` (`FirstName`, `LastName`, `eMail`, `Birthdate`, `Password`) "
-        . "VALUES (:firstName, :lastName, :email, :birthDate, :password)");
+            . "VALUES (:firstName, :lastName, :email, :birthDate, :password)");
         // Bind the stuff (also performs sanitization, preventing SQL injection and the like.)
         $this->db->bind(':firstName', $data['firstName']);
         $this->db->bind(':lastName', $data['lastName']);
@@ -151,6 +151,23 @@ class Assignment
         $this->db->bind(':id', $id);
 
         return $this->db->single();
+    }
+
+    public function getProducts(){
+        $this->db->query('SELECT * FROM `Products`');
+
+        return $this->db->resultsSet();
+    }
+
+    public function getProductByID($id){
+        $this->db->query('SELECT * FROM `Products` WHERE `ProductID` = :id');
+        $this->db->bind(':id', $id);
+
+        if(count($this->db->resultsSet()) > 0){
+            return $this->db->single();
+        }
+
+        return false;
     }
 
 }

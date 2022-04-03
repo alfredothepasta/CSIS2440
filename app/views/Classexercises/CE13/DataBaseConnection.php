@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost"; //127.0.0.1
-$user = "root";
-$password = "DBAdmin"; //if you are using my instance this should work for you, if not you need to know the connection password
-$dbname = "CSIS2440";
+$host = DB_HOST; //127.0.0.1
+$user = DB_USER;
+$password = DB_PASS; //if you are using my instance this should work for you, if not you need to know the connection password
+$dbname = DB_NAME ;
 $con = new mysqli($host, $user, $password, $dbname)
         or die('Could not connect to the database server.  ' . mysqli_connect_error($con));
 

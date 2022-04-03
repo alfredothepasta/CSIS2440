@@ -9,10 +9,10 @@
                 <a href="/Assignments/A2" class="nav-link">Assignment 2</a>
             </li>
             <li class="nav-item">
-                <p class="nav-link">Assignment 3</p>
+                <a href="/Assignments/A3" class="nav-link">Assignment 3</a>
             </li>
             <li class="nav-item">
-                <p class="nav-link">E-Commerce Site</p>
+                <a href="/ECommerce/Login" class="nav-link">E-Commerce Site</a>
             </li>
             <li class="nav-item">
                 <div class="dropdown">
@@ -29,6 +29,10 @@
                         <a class="dropdown-item" href="/Classexercises/CE08">CE08</a>
                         <a class="dropdown-item" href="/Classexercises/CE09">CE09</a>
                         <a class="dropdown-item" href="/Classexercises/CE10">CE10</a>
+                        <a class="dropdown-item" href="/Classexercises/CE11">CE11</a>
+                        <a class="dropdown-item" href="/Classexercises/CE12">CE12</a>
+                        <a class="dropdown-item" href="/Classexercises/CE13">CE13</a>
+                        <a class="dropdown-item" href="/Classexercises/CE14">CE14</a>
                     </div>
                 </div>
             </li>
@@ -38,7 +42,7 @@
                 print '<li class="nav-item"><a href="/Classexercises/CE08/Logout"><button type="button" class="btn btn-secondary:wqg">Logout</button></li></a>';
             }
             if(isset($_SESSION['idUser'])){
-                print '<li class="nav-item"><a href="/Assignments/A2/Logout"><button type="button" class="btn btn-secondary:wqg">Logout</button></li></a>';
+                print '<li class="nav-item"><a href="/ECommerce/Logout"><button type="button" class="btn btn-primary:wqg">Logout</button></li></a>';
             }
             ?>
 
